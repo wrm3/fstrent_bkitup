@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fstrent_bkitup"
+version = "0.1.0"
+description = "A utility for creating timestamped backups of Python scripts and projects"
+readme = "README.md"
+authors = [
+    { name = "Warren R Martel III", email = "wrmartel3@gmail.com" }
+]
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["backup", "utility", "development"]
+dependencies = []
+requires-python = ">=3.7"
+
+[project.urls]
+Homepage = "https://github.com/wrm3/fstrent_bkitup"
+Issues = "https://github.com/wrm3/fstrent_bkitup/issues"
+
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+] 
