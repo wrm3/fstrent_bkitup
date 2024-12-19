@@ -1,18 +1,22 @@
 @echo off
-echo Pushing to GitHub...
+echo GitHub Push Utility
 
-REM Get the commit message from command line argument
-set msg=%1
-if "%msg%"=="" set msg="Update"
+REM Get the bump type and commit message
+set /p BUMP_TYPE="Enter bump type (major/minor/patch) or none: "
+set /p MESSAGE="Enter commit message: "
 
-REM Add all changes
+REM Add all changes and commit first
 git add .
+git commit -m "%MESSAGE%"
 
-REM Commit with message
-git commit -m "%msg%"
+REM If bump type is specified, do version bump
+if not "%BUMP_TYPE%"=="none" (
+    echo Bumping %BUMP_TYPE% version...
+    python -m bumpversion --allow-dirty %BUMP_TYPE%
+)
 
-REM Push to main branch
-git push origin main
+REM Push to main branch with tags
+git push origin main --tags
 
 echo Done!
 pause

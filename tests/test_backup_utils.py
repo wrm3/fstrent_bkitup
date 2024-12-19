@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 import pytest
-from backup_utils import backup_script, backup_project
+from fstrent_bkitup import backup_script, backup_project
 
 @pytest.fixture
 def temp_script(tmp_path):

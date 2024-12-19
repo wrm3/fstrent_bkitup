@@ -29,7 +29,7 @@ ENV/
 .vscode/
 *.swp
 *.swo
-.env
+*.env
 
 # Testing
 .pytest_cache/

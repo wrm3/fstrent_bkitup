@@ -5,7 +5,7 @@ A Python utility for creating timestamped backups of Python scripts and projects
 ## Installation
 
 ```bash
-pip install backup-utils
+pip install fstrent_bkitup
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ import sys
 import os
 # ... your other imports ...
 
-from backup_utils import backup_script
+from fstrent_bkitup import backup_script
 
 # Create backup before running the script
 backup_script(__file__)
@@ -44,7 +44,7 @@ import sys
 import os
 # ... your other imports ...
 
-from backup_utils import backup_project
+from fstrent_bkitup import backup_project
 
 # Create backup of script and project files before running
 backup_project(
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 ### Basic Script Backup
 
 ```python
-from backup_utils import backup_script
+from fstrent_bkitup import backup_script
 
 # Creates a backup like: myscript_20240320_143022.py
 backup_script(__file__)
@@ -92,7 +92,7 @@ backup_script(__file__)
 ### Project Backup with Multiple Paths
 
 ```python
-from backup_utils import backup_project
+from fstrent_bkitup import backup_project
 
 # Creates a zip file containing your script and all specified paths
 # Example: myscript_20240320_143022.zip
