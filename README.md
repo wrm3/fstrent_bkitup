@@ -83,20 +83,20 @@ if __name__ == "__main__":
 ### Basic Script Backup
 
 ```python
-from fstrent_bkitup import backup_script
+from fstrent_bkitup import backup_script as bks
 
 # Creates a backup like: myscript_20240320_143022.py
-backup_script(__file__)
+bks(__file__)
 ```
 
 ### Project Backup with Multiple Paths
 
 ```python
-from fstrent_bkitup import backup_project
+from fstrent_bkitup import backup_project as bkp
 
 # Creates a zip file containing your script and all specified paths
 # Example: myscript_20240320_143022.zip
-backup_project(
+bkp(
     __file__,
     additional_paths=[
         'lib',
