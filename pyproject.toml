@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fstrent_bkitup"
-version = "0.1.1"
+version = "0.1.2"
 description = "A utility for creating timestamped backups of Python scripts and projects"
 readme = "README.md"
 authors = [
