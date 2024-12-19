@@ -85,8 +85,11 @@ if __name__ == "__main__":
 ```python
 from fstrent_bkitup import backup_script as bks
 
-# Creates a backup like: myscript_20240320_143022.py
+# Creates a backup in ./bkups/myscript_20240320_143022.py
 bks(__file__)
+
+# Or specify custom backup directory
+bks(__file__, output_dir='my_backups')
 ```
 
 ### Project Backup with Multiple Paths
@@ -94,16 +97,14 @@ bks(__file__)
 ```python
 from fstrent_bkitup import backup_project as bkp
 
-# Creates a zip file containing your script and all specified paths
-# Example: myscript_20240320_143022.zip
+# Creates a zip file in ./bkups/myscript_20240320_143022.zip
 bkp(
     __file__,
     additional_paths=[
         'lib',
         'config',
         'data/important.csv'
-    ],
-    output_dir='backups'
+    ]
 )
 ```
 

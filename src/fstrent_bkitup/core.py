@@ -5,12 +5,13 @@ import zipfile
 from typing import List, Optional, Union
 from pathlib import Path
 
-def backup_script(script_path: Union[str, Path]) -> Path:
+def backup_script(script_path: Union[str, Path], output_dir: Optional[Union[str, Path]] = None) -> Path:
     """
     Create a timestamped backup of a single script file.
     
     Args:
         script_path: Path to the script file to backup
+        output_dir: Directory to store backup (defaults to 'bkups' in script directory)
         
     Returns:
         Path to the created backup file
@@ -19,9 +20,13 @@ def backup_script(script_path: Union[str, Path]) -> Path:
     if not script_path.is_file():
         raise FileNotFoundError(f"Script file not found: {script_path}")
         
+    # Default to 'bkups' directory in script's location
+    output_dir = Path(output_dir) if output_dir else script_path.parent / 'bkups'
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     backup_name = f"{script_path.stem}_{timestamp}{script_path.suffix}"
-    backup_path = script_path.parent / backup_name
+    backup_path = output_dir / backup_name
     
     shutil.copy2(script_path, backup_path)
     print(f"Backup created at: {backup_path}")
@@ -39,7 +44,7 @@ def backup_project(
     Args:
         base_script_path: Path to the main script file
         additional_paths: List of additional paths to include in backup
-        output_dir: Directory to store the backup (defaults to script directory)
+        output_dir: Directory to store backup (defaults to 'bkups' in script directory)
         
     Returns:
         Path to the created zip archive
@@ -49,7 +54,7 @@ def backup_project(
         raise FileNotFoundError(f"Script file not found: {base_script_path}")
         
     project_dir = base_script_path.parent
-    output_dir = Path(output_dir) if output_dir else project_dir
+    output_dir = Path(output_dir) if output_dir else project_dir / 'bkups'
     output_dir.mkdir(parents=True, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
